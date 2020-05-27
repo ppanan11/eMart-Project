@@ -8,24 +8,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping( value= "/user")
+//@RequestMapping( value= "/user")
 public class BuyerController {
 
     @Autowired
     private BuyerService buyerService;
 
-    @PostMapping(value = "id/{id}")
-    public BuyerEntity getBuyerById(@PathVariable Integer id){
+    /**
+     * get buyer info
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/id",method = RequestMethod.GET)
+    public BuyerEntity getBuyerById(@RequestParam("id") Integer id){
         return buyerService.getBuyerById(id);
     }
 
-    @GetMapping
+    /**
+     * get all buyers
+     * @return
+     */
+    @RequestMapping(value = "/buyers",method = RequestMethod.GET)
     public List<BuyerEntity> findAll(){
         return  buyerService.getAllBuyer();
     }
 
 
-    @PostMapping
+    /**
+     * insert a buyer info
+     * @param buyerEntity
+     * @return
+     */
+    @RequestMapping(value = "/buyer",method = RequestMethod.POST)
     public BuyerEntity insertOneBuyer(@RequestBody BuyerEntity buyerEntity){
         return buyerService.inertOneBuyer(buyerEntity);
     }

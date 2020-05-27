@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping( value= "/purchase")
 public class PurchaseController {
 
     @Autowired
@@ -20,8 +19,8 @@ public class PurchaseController {
      * @param buyerId
      * @return
      */
-    @GetMapping(value = "/{buyerId}")
-    public List<PurchasehistoryEntity> getPurchaseHistory(@PathVariable Integer buyerId){
+    @RequestMapping( value= "/purchase",method = RequestMethod.GET)
+    public List<PurchasehistoryEntity> getPurchaseHistory(@RequestParam("buyerId") Integer buyerId){
         return purchaseService.getPurchaseHistory(buyerId);
     }
 
@@ -30,7 +29,7 @@ public class PurchaseController {
      * @param purchasehistoryEntity
      * @return
      */
-    @PostMapping(value = "add")
+    @RequestMapping(value = "/addpurchase",method = RequestMethod.POST)
     public PurchasehistoryEntity addPurchaseHistory(@RequestBody PurchasehistoryEntity purchasehistoryEntity){
         return purchaseService.addPurchaseHistory(purchasehistoryEntity);
     }

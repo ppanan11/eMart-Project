@@ -8,17 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping( value= "/item")
 public class ItemDetailController {
     @Autowired
     private ItemDetailService itemsService;
 
-    @GetMapping(value="/{name}")
-    public List<ItemsEntity> getItemByName(@PathVariable String name){
+    @RequestMapping( value= "/item",method = RequestMethod.GET)
+    public List<ItemsEntity> getItemByName(@RequestParam("name") String name){
         return itemsService.getItemByName(name);
     }
 
-    @GetMapping()
+    @RequestMapping( value= "/items",method = RequestMethod.GET)
     public List<ItemsEntity> getAllItems(){
         return itemsService.getAllItem();
     }

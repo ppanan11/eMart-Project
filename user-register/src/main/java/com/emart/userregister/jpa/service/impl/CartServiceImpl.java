@@ -21,7 +21,7 @@ public class CartServiceImpl implements CartService {
      * @return
      */
     @Override
-    public List<CartEntity> findCartByUser(String username) {
+    public List findCartByUser(String username) {
         return cartRepository.findCartEntitiesByBuyerUsername(username);
     }
 

@@ -16,7 +16,8 @@ public interface CartRepository extends JpaRepository<CartEntity,Integer> {
      * @param username
      * @return
      */
-    List<CartEntity> findCartEntitiesByBuyerUsername(String username);
+    @Query(nativeQuery=true, value="select a.buyer_username,a.item_name,a.count,b.price,a.id from cart a,items b where a.buyer_username=:username and a.item_id=b.id")
+    List findCartEntitiesByBuyerUsername(@Param("username") String username);
 
 
     /**

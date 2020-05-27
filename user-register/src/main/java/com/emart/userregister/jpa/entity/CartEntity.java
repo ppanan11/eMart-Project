@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "cart", schema = "emart")
 public class CartEntity {
     private int id;
-    private int itemName;
+    private String itemName;
     private Integer count;
     private int itemId;
     private String buyerUsername;
@@ -23,11 +23,11 @@ public class CartEntity {
 
     @Basic
     @Column(name = "item_name")
-    public int getItemName() {
+    public String getItemName() {
         return itemName;
     }
 
-    public void setItemName(int itemName) {
+    public void setItemName(String itemName) {
         this.itemName = itemName;
     }
 
@@ -55,13 +55,13 @@ public class CartEntity {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + itemName;
-        result = 31 * result + (count != null ? count.hashCode() : 0);
-        return result;
-    }
+//    @Override
+//    public String hashCode() {
+//        String result = id;
+//        result = 31 * result + itemName;
+//        result = 31 * result + (count != null ? count.hashCode() : 0);
+//        return result;
+//    }
 
 //    @Basic
 //    @Column(name = "buyer_id")

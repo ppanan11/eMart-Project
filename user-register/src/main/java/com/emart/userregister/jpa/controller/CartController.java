@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping( value= "/cart")
 public class CartController {
 
     @Autowired
@@ -19,8 +18,8 @@ public class CartController {
      * @param username
      * @return
      */
-    @GetMapping(value="/{username}")
-    public List<CartEntity> getCartByUser(@PathVariable String username){
+    @RequestMapping( value= "/cart",method = RequestMethod.GET)
+    public List getCartByUser(@RequestParam("username") String username){
         return  cartService.findCartByUser(username);
     }
 
@@ -29,8 +28,8 @@ public class CartController {
      * @param cartEntity
      * @return
      */
-    @PostMapping(value = "add")
-    public CartEntity addToCart(CartEntity cartEntity){
+    @RequestMapping(value = "/addcart",method = RequestMethod.POST)
+    public CartEntity addToCart(@RequestBody CartEntity cartEntity){
         return cartService.addToCart(cartEntity);
     }
 
@@ -39,8 +38,8 @@ public class CartController {
      * @param cartEntity
      * @return
      */
-    @DeleteMapping(value = "delete")
-    public boolean deleteFromCart(CartEntity cartEntity){
+    @RequestMapping(value = "/deletecart",method = RequestMethod.DELETE)
+    public boolean deleteFromCart(@RequestBody CartEntity cartEntity){
         return cartService.removeFromCart(cartEntity);
     }
 
@@ -49,8 +48,8 @@ public class CartController {
      * @param cartEntity
      * @return
      */
-    @PutMapping(value = "update")
-    public boolean updateCart(CartEntity cartEntity){
+    @RequestMapping(value = "/updatecart",method = RequestMethod.PUT)
+    public boolean updateCart(@RequestBody CartEntity cartEntity){
         return cartService.updateCart(cartEntity);
     }
 }

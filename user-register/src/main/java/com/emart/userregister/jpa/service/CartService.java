@@ -11,7 +11,7 @@ public interface CartService {
      * @param username
      * @return
      */
-    List<CartEntity> findCartByUser(String username);
+    List findCartByUser(String username);
 
     /**
      * add a item to  cart

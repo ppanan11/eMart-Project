@@ -9,13 +9,14 @@ eureka:
       defaultZone: http://root:123456@localhost:7776/eureka/
 zuul:
   routes:
-    user-register: /user/** # /userlogin->/user/userlogin
-    seller: /seller/** #seller related service
-#    #授权服务
-#    auth-service:
-#      auth-service: /auth/**
-#      #为了添加授权验证，我们需要传递“/auth/”在路径中来验证服务
-#      strip-prefix: false
-#      sensitive-headers: Cookie,Set-Cookie
+    user-register: /user/**
+#      /userlogin->/user/userlogin
+    #seller related service
 
+    sellers: /seller/**
+    auth-service:
+      path: /auth/**
+      service-id: AUTH-SERVICE
+      strip-prefix: false
+      sensitive-headers: Cookie,Set-Cookie
 

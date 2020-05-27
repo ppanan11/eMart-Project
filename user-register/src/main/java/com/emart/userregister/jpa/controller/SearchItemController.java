@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping( value= "/searchitem")
 public class SearchItemController {
     @Autowired
     private  SearchItemService searchItemService;
@@ -18,8 +17,8 @@ public class SearchItemController {
      * @param itemname
      * @return
      */
-    @GetMapping(value="/{itemname}")
-    public List<ItemsEntity> getSearchIteams(@PathVariable String itemname){
+    @RequestMapping( value= "/searchitem",method = RequestMethod.GET)
+    public List<ItemsEntity> getSearchIteams(@RequestParam("itemname") String itemname){
         return searchItemService.findItems(itemname);
     }
 
