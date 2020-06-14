@@ -22,5 +22,21 @@ public class SearchItemController {
         return searchItemService.findItems(itemname);
     }
 
+    /**
+     * find a item
+     * @param name
+     * @param start
+     * @param end
+     * @return
+     */
+    @RequestMapping(value = "/searchitems",method = RequestMethod.GET)
+    public List<ItemsEntity> searchItem(@RequestParam("name") String name,@RequestParam("start") Integer start,@RequestParam("end") Integer end){
+        return searchItemService.searchIteams(name,start,end);
+    }
 
+
+    @RequestMapping(value = "/homeitem",method = RequestMethod.GET)
+    public List<ItemsEntity> homeItems(){
+        return searchItemService.findHomeItems();
+    }
 }

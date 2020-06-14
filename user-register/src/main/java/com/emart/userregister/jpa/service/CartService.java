@@ -2,6 +2,7 @@ package com.emart.userregister.jpa.service;
 
 import com.emart.userregister.jpa.entity.CartEntity;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface CartService {
@@ -29,8 +30,16 @@ public interface CartService {
 
     /**
      * update a item to  cart
-     * @param cart
+     * @param
      * @return
      */
     boolean updateCart(CartEntity cartEntity);
+
+    /**
+     * remove all for a user
+     * @param buyer_username
+     * @return
+     */
+    @Transactional
+    Integer deleteCart(String buyer_username);
 }

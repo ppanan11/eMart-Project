@@ -2,7 +2,6 @@ package com.emart.userregister.jpa.controller;
 
 import com.emart.userregister.jpa.entity.PurchasehistoryEntity;
 import com.emart.userregister.jpa.service.PurchaseService;
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,12 +15,12 @@ public class PurchaseController {
 
     /**
      * get a purchase history list for a buyer
-     * @param buyerId
+     * @param
      * @return
      */
     @RequestMapping( value= "/purchase",method = RequestMethod.GET)
-    public List<PurchasehistoryEntity> getPurchaseHistory(@RequestParam("buyerId") Integer buyerId){
-        return purchaseService.getPurchaseHistory(buyerId);
+    public List getPurchaseHistory(@RequestParam("username") String username){
+        return purchaseService.getPurchaseHistory(username);
     }
 
     /**

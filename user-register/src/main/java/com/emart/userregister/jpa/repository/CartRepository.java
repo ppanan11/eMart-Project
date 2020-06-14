@@ -16,7 +16,7 @@ public interface CartRepository extends JpaRepository<CartEntity,Integer> {
      * @param username
      * @return
      */
-    @Query(nativeQuery=true, value="select a.buyer_username,a.item_name,a.count,b.price,a.id from cart a,items b where a.buyer_username=:username and a.item_id=b.id")
+    @Query(nativeQuery=true, value="select a.buyer_username,a.item_name,a.count,b.price,a.item_id from cart a,items b where a.buyer_username=:username and a.item_id=b.id")
     List findCartEntitiesByBuyerUsername(@Param("username") String username);
 
 
@@ -26,4 +26,13 @@ public interface CartRepository extends JpaRepository<CartEntity,Integer> {
      */
     @Query(nativeQuery=true, value="update cart set count = :number where buyerUsername=:username and item_id=:item_id")
     Boolean updateCart(@Param("number") Integer number,@Param("username") String username,@Param("item_id") Integer item_id);
+
+    /**
+     * clean carts
+     * @param buyerUsername
+     * @return
+     */
+    Integer deleteAllByBuyerUsername(@Param("buyerUsername") String buyerUsername);
+
+
 }

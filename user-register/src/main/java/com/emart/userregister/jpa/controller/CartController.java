@@ -35,12 +35,12 @@ public class CartController {
 
     /**
      * delete a item from cart
-     * @param cartEntity
+     * @param
      * @return
      */
     @RequestMapping(value = "/deletecart",method = RequestMethod.DELETE)
-    public boolean deleteFromCart(@RequestBody CartEntity cartEntity){
-        return cartService.removeFromCart(cartEntity);
+    public Integer deleteFromCart(@RequestParam("username") String username){
+        return cartService.deleteCart(username);
     }
 
     /**

@@ -21,4 +21,13 @@ public interface SearchItemService {
      * @return
      */
     List<ItemsEntity> findHomeItems();
+
+    /**
+     * search a item
+     * @param name
+     * @param start
+     * @param end
+     * @return
+     */
+    List<ItemsEntity> searchIteams(String name,Integer start,Integer end);
 }

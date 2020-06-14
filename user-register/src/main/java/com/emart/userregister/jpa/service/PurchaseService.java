@@ -9,10 +9,10 @@ public interface PurchaseService {
 
     /**
      * get all purchasehistory list by a user
-     * @param buyerId
+     * @param
      * @return
      */
-    List<PurchasehistoryEntity> getPurchaseHistory(Integer buyerId);
+    List getPurchaseHistory(String username);
 
     /**
      * add a purchase history after submit order
@@ -20,4 +20,6 @@ public interface PurchaseService {
      * @return
      */
     PurchasehistoryEntity addPurchaseHistory(PurchasehistoryEntity purchasehistoryEntity);
+
+
 }

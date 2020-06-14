@@ -20,8 +20,8 @@ public class PurchaseServiceImpl implements PurchaseService {
      * @return
      */
     @Override
-    public List<PurchasehistoryEntity> getPurchaseHistory(Integer buyerId) {
-        return purchaseRepository.findPurchasersEntitiesByBuyerId(buyerId);
+    public List getPurchaseHistory(String username) {
+        return purchaseRepository.getHistoryByUsername(username);
     }
 
     /**

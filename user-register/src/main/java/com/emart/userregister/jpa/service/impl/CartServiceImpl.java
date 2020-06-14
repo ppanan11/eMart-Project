@@ -6,6 +6,7 @@ import com.emart.userregister.jpa.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -55,4 +56,12 @@ public class CartServiceImpl implements CartService {
     public boolean updateCart(CartEntity cartEntity) {
         return cartRepository.updateCart(cartEntity.getCount(),cartEntity.getBuyerUsername(),cartEntity.getItemId());
     }
+
+    @Override
+    @Transactional
+    public Integer deleteCart(String buyer_username) {
+        return cartRepository.deleteAllByBuyerUsername(buyer_username);
+    }
+
+
 }

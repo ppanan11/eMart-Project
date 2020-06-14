@@ -37,4 +37,11 @@ public class SearchItemImpl implements SearchItemService {
     public List<ItemsEntity> findHomeItems() {
         return searchIteamRepository.findHomeItems();
     }
+
+    @Override
+    public List<ItemsEntity> searchIteams(String name, Integer start, Integer end) {
+        return searchIteamRepository.searchItems(name,start,end);
+    }
+
+
 }
