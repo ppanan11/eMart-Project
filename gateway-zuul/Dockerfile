@@ -1,5 +1,25 @@
-FROM java:8-jdk-alpine
-COPY ./target/gateway-zuul-0.0.1-SNAPSHOT.jar /usr/app/
-WORKDIR /usr/app
-RUN sh -c 'touch gateway-zuul-0.0.1.jar'
-ENTRYPOINT ["java", "-jar", "gateway-zuul-0.0.1.jar"]
+pipeline {
+    agent any
+    environment {
+		dockerImage = ''
+    }
+    stages {
+    	stage('CheckOut Code'){
+         	steps{
+            	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ppanan11/eMart-Project']]])
+            }
+        }
+        stage('Maven Build'){
+        	steps{
+        	    bat 'mvn clean package -test'
+        	}
+        }
+        stage('Image Build'){
+        	steps{
+        	    bat 'mvn dockerfile:build'
+        	}
+        }
+
+
+    }
+}
